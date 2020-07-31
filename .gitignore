@@ -1,3 +1,5 @@
 node_modules/
 data/
+dist/
+server/public/
 package-lock.json

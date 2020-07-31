@@ -1,16 +1,15 @@
+import Express from 'express'
+import Mongoose from 'mongoose'
 
-import Express from 'express';
-import Mongoose from 'mongoose';
-
-import config from '@config';
+import config from '@config'
 import v1Router from '@routes'
 
-Mongoose.connect(config.databaseUri, { useNewUrlParser: true });
+Mongoose.connect(config.databaseUri, { useNewUrlParser: true })
 
-const app = Express();
+const app = Express()
 
-app.use(v1Router);
+app.use(v1Router)
 
 app.listen(3000, () => {
-    console.log('server started yes');
+    console.log('server started yes')
 })

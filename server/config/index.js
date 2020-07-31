@@ -1,7 +1,8 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 export default {
-    databaseUri: process.env.DATABASE_URL || "mongodb://localhost:27017/mevnmongo"
+    databaseUri:
+        process.env.DATABASE_URL || 'mongodb://localhost:27017/mevnmongo',
 }

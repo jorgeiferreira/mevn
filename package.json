@@ -29,6 +29,7 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2"
   }
 }

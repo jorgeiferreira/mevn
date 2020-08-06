@@ -1,5 +1,8 @@
 <template>
     <div>
-       <h1 class="text-center text-teal-900">my template</h1>
+        <router-link to="/auth/login">Login</router-link>
+        <router-link to="/auth/register">Register</router-link>
+
+        <router-view></router-view>
     </div>
 </temph1te>

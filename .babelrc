@@ -10,6 +10,8 @@
                     "./"
                 ],
                 "alias": {
+                    "@": "./",
+                    "@pages": "./client/pages",
                     "@config": "./server/config",
                     "@routes": "./server/routes",
                     "@controllers": "./server/controllers"

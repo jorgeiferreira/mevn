@@ -5,6 +5,7 @@ import config from '@config'
 import v1Router from '@routes'
 
 import WebpackConfig from '../webpack.config'
+import WebpackHotMiddleware from 'webpack-hot-middleware'
 import WebpackDevMiddleware from 'webpack-dev-middleware'
 import webpack from 'webpack'
 
@@ -14,7 +15,12 @@ const app = Express()
 
 const compiler = webpack(WebpackConfig)
 
-app.use(WebpackDevMiddleware(compiler))
+app.use(WebpackDevMiddleware(compiler,{
+    hot:true,
+    publicPath: WebpackConfig.output.publicPath
+}))
+
+app.use(WebpackHotMiddleware(compiler))
 
 app.use(v1Router)
 

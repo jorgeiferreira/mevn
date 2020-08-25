@@ -17,6 +17,7 @@
                     "@pages": "./client/pages",
                     "@config": "./server/config",
                     "@routes": "./server/routes",
+                    "@models": "./server/models",
                     "@controllers": "./server/controllers"
                 }
             }

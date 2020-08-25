@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import {POST_REGISTER} from '@store/auth/actions'
+
 export default {
     data:()=>({
         model:{
@@ -30,7 +32,7 @@ export default {
     }),
     methods:{
         register() {
-            console.log("validation pass")
+            this.$store.dispatch(POST_REGISTER, this.model)
         }
     }
 }

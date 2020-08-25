@@ -3,8 +3,6 @@ import Mongoose from 'mongoose'
 import path from 'path'
 import config from '@config'
 import v1Router from '@routes'
-import BodyParser from 'body-parser'
-
 
 import WebpackConfig from '../webpack.config'
 import WebpackHotMiddleware from 'webpack-hot-middleware'
@@ -28,6 +26,8 @@ app.use(WebpackDevMiddleware(compiler,{
 app.use(WebpackHotMiddleware(compiler))
 
 app.use(v1Router)
+
+app.use(Express.static(path.resolve(__dirname,'public')))
 
 app.use('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public/index.html'))

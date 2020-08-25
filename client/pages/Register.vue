@@ -8,7 +8,11 @@
                         <text-input name="name" rules="required" v-model="model.name" placeholder="Your names"></text-input>
                         <text-input name="email" rules="required|email" v-model="model.email" placeholder="Your email"></text-input>
                         <text-input name="password" rules="required" v-model="model.password" placeholder="Your password" type="password"></text-input>
-                        <button class="w-full mt-3 py-4 bg-emerald text-white rounded-sm focus:outline-none hover:bg-emerald-light">Sign Up</button>
+                        <btn
+                            label='Sign up'
+                            :disabled="loading"
+                            :loading="loading"
+                        />
                     </div> 
                 </div> 
             </form>
@@ -24,6 +28,7 @@ import {POST_REGISTER} from '@store/auth/actions'
 
 export default {
     data:()=>({
+        loading:false,
         model:{
           name:"",  
           email:"",  
@@ -32,7 +37,15 @@ export default {
     }),
     methods:{
         register() {
+            this.toggleLoading()
             this.$store.dispatch(POST_REGISTER, this.model)
+                .then(()=>{
+                    this.toggleLoading()
+                    this.$router.push('/')
+                })
+        },
+        toggleLoading(){
+            this.loading = !this.loading
         }
     }
 }

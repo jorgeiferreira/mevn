@@ -23,11 +23,12 @@
 </template>
 
 <script>
+import formMixin from '@client/mixins/form'
 import {POST_LOGIN, SET_AUTH} from '@store/auth/actions'
 
 export default {
+    mixins:[formMixin],
     data:()=>({
-        loading:false,
         model:{
           email:"",  
           password:"",  
@@ -47,9 +48,6 @@ export default {
                     this.toggleLoading()
                     this.$refs.validationObserver.setErrors(error.response.data)
                 })
-        },
-        toggleLoading(){
-            this.loading = !this.loading
         }
     }
 }

@@ -28,6 +28,20 @@ export default async (req, res, next) => {
 
         next()
 
+        const timeInMinutes = Math.ceil((new Date().getTime() - new Date(existingReset.createAt).getTime())/60000)
+
+        if(timeInMinutes>5){
+            
+            await PasswordReset.findOneAndDelete({token})
+            
+            throw new Yup.ValidationError(
+                'Reset token expire',
+                req.body,
+                'password'
+            )
+
+        }
+
     } catch (error) {
         return res.status(422).json({
             [error.path]: [error.message]

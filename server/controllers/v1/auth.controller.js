@@ -1,6 +1,7 @@
 import User from '@models/User'
 import Bcrypt from 'bcryptjs'
 import PasswordReset from '@models/PasswordReset'
+import { response } from 'express'
 
 const login = async (req, res) => {
     const {email,password}= req.body
@@ -59,9 +60,28 @@ const resetPassword = async (req, res) => {
     })
 }
 
+const confirmEmail = async (req, res) => {
+    const user = await User.findOneAndUpdate({
+        email: req.user.email
+    },{
+        emailConfirmedCode:null,
+        emailconfirmedAt: new Date()
+    }, {
+        new: true
+    })
+
+    const token = user.generateToken()
+
+    return res.json({
+        user,
+        token
+    })
+}
+
 export default {
     login,
     register,
     forgotPassword,
-    resetPassword
+    resetPassword,
+    confirmEmail
 }

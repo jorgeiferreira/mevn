@@ -3,11 +3,16 @@ import Login from '@pages/Login.vue'
 import ForgotPassword from '@pages/ForgotPassword.vue'
 import ResetPassword from '@pages/ResetPassword.vue'
 import Register from '@pages/Register.vue'
+import EmailConfirm from '@pages/EmailConfirm.vue'
 import Home from '@pages/Home.vue'
 
 export default new Router({
     node:'history',
     routes:[
+        {
+            path:'/',
+            component: Home
+        },
         {
             path:'/auth/login',
             component: Login
@@ -25,8 +30,9 @@ export default new Router({
             component: ResetPassword
         },
         {
-            path:'/',
-            component: Home
+            path:'/auth/emails/confirm/:token',
+            component: EmailConfirm
         },
+
     ]
 })

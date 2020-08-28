@@ -34,7 +34,7 @@ UserSchema.post('save', async function(){
             .subject("Confirmation email")
             .data({
                 name:this.name,
-                url:`${config.url}/auth/emails/confirm/${this.emailConfirmedCode}`
+                url:`${config.url}/#/auth/emails/confirm/${this.emailConfirmedCode}`
             })
             .send()
 
@@ -60,7 +60,7 @@ UserSchema.methods.forgotPassword = async function(){
         .to(this.email, this.name)
         .subject('Password reset')
         .data({
-            url:`${config.url}/auth/passwords/reset/`,
+            url:`${config.url}/#/auth/passwords/reset/${token}`,
             name: this.name
         })
         .send()

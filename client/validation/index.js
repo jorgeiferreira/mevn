@@ -17,3 +17,8 @@ extend('email', {
     ...email,
     message: 'This field must be a valid email'
 });
+
+
+export default{
+
+}

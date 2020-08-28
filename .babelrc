@@ -18,6 +18,8 @@
                     "@config": "./server/config",
                     "@routes": "./server/routes",
                     "@models": "./server/models",
+                    "@server": "./server",
+                    "@validators": "./server/validators",
                     "@controllers": "./server/controllers"
                 }
             }

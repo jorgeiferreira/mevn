@@ -1,6 +1,6 @@
 <template>
     <div class="container my-16 w-full mx-auto">
-        <ValidationObserver v-slot="{ handleSubmit }">
+        <ValidationObserver ref="validationObserver" v-slot="{ handleSubmit }">
             <form @submit.prevent="handleSubmit(register)">
                 <div class="max-w-sm mx-auto">
                     <h3 class="text-center text-gold text-3xl">Register</h3>  
@@ -44,6 +44,10 @@ export default {
                     localStorage.setItem('auth', JSON.stringify(response.data))
                     this.$store.commit(SET_AUTH, response.data);
                     this.$router.push('/')
+                })
+                .catch(error=>{
+                    this.toggleLoading()
+                    this.$refs.validationObserver.setErrors(error.response.data)
                 })
         },
         toggleLoading(){
